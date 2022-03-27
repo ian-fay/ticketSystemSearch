@@ -21,6 +21,7 @@ class Program
                 // ask user a question
                 Console.WriteLine("1) Read data from file.");
                 Console.WriteLine("2) Add data to file.");
+                Console.WriteLine("3) Search files.");
                 Console.WriteLine("Enter any other key to exit.");
                 choice = Console.ReadLine();
                 
@@ -223,8 +224,16 @@ class Program
                                 sw.Close();
                         } 
                 }
+                else if(choice == "3") {
+                    Console.WriteLine("What would you like to search?:");
+                    Console.WriteLine("1) Search Status");
+                    Console.WriteLine("2) Search Priority");
+                    Console.WriteLine("3) Search Submitter");
+                    Console.WriteLine("Enter any other key to exit.");
+                    choice = Console.ReadLine();
+                }
                 logger.Info("User choice: {Choice}", choice);
-            } while (choice == "1" || choice == "2");
+            } while (choice == "1" || choice == "2" || choice == "3");
 
             logger.Info("Program Ended.");
         }
