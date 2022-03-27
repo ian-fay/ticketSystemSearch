@@ -239,7 +239,6 @@ class Program
                         {
                             EnhancementList.Add(line);
                         }
-
                     foreach (string line in File.ReadLines(@"Task.csv")) 
                         {
                             TaskList.Add(line);
@@ -252,12 +251,83 @@ class Program
                     Console.WriteLine("Enter any other key to exit.");
                     choice = Console.ReadLine();
 
-                    //in order to search the files, the contents of each file will need to be added to seperate list objects
-                    //the list objects should be filled when this section of the program is first ran
-                    //in order to fill the list objects, will need to loop through each file and add their contents to a list. 
-                    //that way its refreshed every time. 
+                    if(choice == "1") {
+
+                        Console.WriteLine("Input the status you want to search(OPEN or CLOSED):");
+                        choice = Console.ReadLine();
+                            var SearchTicketList = TicketList.Where(m => m.Contains(choice)).Select(m => m);
+                            var SearchEnhancementList = EnhancementList.Where(m => m.Contains(choice)).Select(m => m);
+                            var SearchTaskList = TaskList.Where(m => m.Contains(choice)).Select(m => m);
+                            
+                            Console.WriteLine("Found entrys:");
+                            Console.WriteLine("Entry's in Tickets.csv");
+                            foreach(string m in SearchTicketList)
+                                {
+                                    Console.WriteLine($"  {m}");
+                                }
+                            Console.WriteLine("Entry's in Enhancements.csv");
+                            foreach(string m in SearchEnhancementList)
+                                {
+                                    Console.WriteLine($"  {m}");
+                                }
+                            Console.WriteLine("Entry's in Tasks.csv");
+                            foreach(string m in SearchTaskList)
+                                {
+                                    Console.WriteLine($"  {m}");
+                                }        
+
+                    } else if(choice == "2") {
+                        Console.WriteLine("Input the Priority you want to search(Low, Medium or High):");
+                        choice = Console.ReadLine();
+                            var SearchTicketList = TicketList.Where(m => m.Contains(choice)).Select(m => m);
+                            var SearchEnhancementList = EnhancementList.Where(m => m.Contains(choice)).Select(m => m);
+                            var SearchTaskList = TaskList.Where(m => m.Contains(choice)).Select(m => m);
+
+                            Console.WriteLine("Found entrys:");
+                            Console.WriteLine("Entry's in Tickets.csv");
+                            foreach(string m in SearchTicketList)
+                                {
+                                    Console.WriteLine($"  {m}");
+                                }
+                            Console.WriteLine("Entry's in Enhancements.csv");
+                            foreach(string m in SearchEnhancementList)
+                                {
+                                    Console.WriteLine($"  {m}");
+                                }
+                            Console.WriteLine("Entry's in Tasks.csv");
+                            foreach(string m in SearchTaskList)
+                                {
+                                    Console.WriteLine($"  {m}");
+                                } 
+
+                    } else if(choice == "2") {
+                        Console.WriteLine("Input the submitter you want to search('FirstName LastName'):");
+                        choice = Console.ReadLine();
+                            var SearchTicketList = TicketList.Where(m => m.Contains(choice)).Select(m => m);
+                            var SearchEnhancementList = EnhancementList.Where(m => m.Contains(choice)).Select(m => m);
+                            var SearchTaskList = TaskList.Where(m => m.Contains(choice)).Select(m => m);
+
+                            Console.WriteLine("Found entrys:");
+                            Console.WriteLine("Entry's in Tickets.csv");
+                            foreach(string m in SearchTicketList)
+                                {
+                                    Console.WriteLine($"  {m}");
+                                }
+                            Console.WriteLine("Entry's in Enhancements.csv");
+                            foreach(string m in SearchEnhancementList)
+                                {
+                                    Console.WriteLine($"  {m}");
+                                }
+                            Console.WriteLine("Entry's in Tasks.csv");
+                            foreach(string m in SearchTaskList)
+                                {
+                                    Console.WriteLine($"  {m}");
+                                } 
+
+                    }
 
                 }
+
                 logger.Info("User choice: {Choice}", choice);
             } while (choice == "1" || choice == "2" || choice == "3");
 
