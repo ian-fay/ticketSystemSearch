@@ -1,6 +1,8 @@
-﻿using System;
+﻿using NLog.Web;
+using System;
+using System.Collections.Generic;
 using System.IO;
-using NLog.Web;
+using System.Linq;
 
 namespace midterm
 {
@@ -224,13 +226,37 @@ class Program
                                 sw.Close();
                         } 
                 }
-                else if(choice == "3") {
+                else if(choice == "3") {          
+                    List<string> TicketList = new List<string>();
+                    List<string> TaskList = new List<string>();
+                    List<string> EnhancementList = new List<string>();
+
+                    foreach (string line in File.ReadLines(@"Tickets.csv")) 
+                        {
+                            TicketList.Add(line);
+                        }
+                    foreach (string line in File.ReadLines(@"Enhancements.csv")) 
+                        {
+                            EnhancementList.Add(line);
+                        }
+
+                    foreach (string line in File.ReadLines(@"Task.csv")) 
+                        {
+                            TaskList.Add(line);
+                        }    
+
                     Console.WriteLine("What would you like to search?:");
                     Console.WriteLine("1) Search Status");
                     Console.WriteLine("2) Search Priority");
                     Console.WriteLine("3) Search Submitter");
                     Console.WriteLine("Enter any other key to exit.");
                     choice = Console.ReadLine();
+
+                    //in order to search the files, the contents of each file will need to be added to seperate list objects
+                    //the list objects should be filled when this section of the program is first ran
+                    //in order to fill the list objects, will need to loop through each file and add their contents to a list. 
+                    //that way its refreshed every time. 
+
                 }
                 logger.Info("User choice: {Choice}", choice);
             } while (choice == "1" || choice == "2" || choice == "3");
